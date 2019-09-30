@@ -1,0 +1,22 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "do homework",
+      "desc": "todos script with json-server",
+      "done": false
+    },
+    {
+      "title": "relax",
+      "desc": "sleeping...",
+      "done": false,
+      "id": 2
+    },
+    {
+      "title": "free time",
+      "desc": "book reading",
+      "done": false,
+      "id": 3
+    }
+  ]
+}
