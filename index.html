@@ -9,7 +9,9 @@
 
 <style>
 .todos {
-    margin: auto;
+    /* margin: auto; */
+    width: 30%;
+
 }
 .todo {
     margin: 15px;
@@ -36,8 +38,14 @@
 }
 .done_text {
     color: #fff;
-    display: inline;
+    display: inline-block;
+   margin-left: 10px;
+}
+.close_but {
     float: right;
+    margin: 2px;
+    
+     
 }
 </style>
 </head>
@@ -51,11 +59,15 @@
 
 
         </div>
-        <!-- <div class="make_new">
-            <form><input type="text" class="new_todo"><button type="submit">Zapisz</button></form>
-        </div> -->
+        <div class="make_new">
+            <h2 class="">Add new Task</h2>
+            <form><input type="text" class="new_todo_title" placeholder="your task's title">
+                <form><input type="text" class="new_todo_desc" placeholder="description">
+                    <button type="submit" class="btn btn-info">Zapisz</button></form>
+            
+        </div>
     </div>
 </body>
 <script src="node_modules/jquery/dist/jquery.js"></script>
-<script src="index.js"></script>
+<script type="module" src="index.js" ></script>
 </html>
