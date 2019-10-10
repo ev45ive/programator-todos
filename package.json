@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack",
-    "start": "http-server json-server projekty/todos.json "
+    "start-json": "json-server todos.json --watch",
+    "http": "http-server"
   },
   "author": "kamarb",
   "license": "ISC",
