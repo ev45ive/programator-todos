@@ -1,8 +1,7 @@
 # todos
 very simple todos app
 
-
-what will you need to run an app?
+You'll need:
 json-server
 http-server
 jQuery
