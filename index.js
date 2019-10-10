@@ -1,61 +1,58 @@
+import {xhr} from "./xhr.js";
 
 class Todos {
     constructor(url) {
         this.todosList = $(".todos");
         this.url = url;
 
-
         this.renderTodos();
 
         this.todosList.on("click", ".todo_title", e => {
 
-            let todo = e.target,
-                id = todo.dataset.id,
-                state = (todo.dataset.done == "true") ? false : true;  
+          this.makeDone(e)
 
-            
-            this.changeTodo(id, state);
+        });
 
-            this.todosList.empty();
-            this.renderTodos();
+        this.todosList.on("click", ".close_but", e => {
 
-        })
+            this.deleteTodo(e)
+        });
+
+        
 
     }
 
-    getTodos() {
-        
-        let xhr = new XMLHttpRequest();
-        
-            xhr.open("GET", this.url);
-        
-            let p = new Promise(function(resolve, reject) {
-        
-                xhr.onload = function() {
-                    if(xhr.status === 200) {
-                        resolve(JSON.parse(xhr.response));
-                    } else {
-                        reject( new Error("Wystąpił błąd") );
-                    }
-                };
-        
-                xhr.onerror = function() {
-                    reject( new Error("Wystapił błąd") );
-                };
-        
-            });
-        
-            xhr.send();
-        
-            return p;
-        
-        }
+    async deleteTodo(e) {
 
-
-    async renderTodos() {
-
-        let json = await this.getTodos();
+        let todo = e.currentTarget.nextElementSibling,
+        id = todo.dataset.id,
+        url = this.url+"/"+id;
         
+       await xhr("DELETE", url, null)
+
+       this.renderTodos();
+    
+    };
+
+   async makeDone(e) {
+        let todo = e.target,
+        id = todo.dataset.id,
+        state = (todo.dataset.done == "true") ? false : true,
+       data = {"done": state},
+        url = this.url+"/"+id;
+    
+    await xhr("PATCH", url, data)
+
+    this.renderTodos();
+    };
+
+   async renderTodos() {
+
+        this.todosList.empty();
+
+        let json = await xhr("GET", this.url, null);
+
+                      
         json.forEach(el => {
             
             el.done ? this.todosList.append(this.renderTodo(el)) : this.todosList.prepend(this.renderTodo(el))
@@ -67,35 +64,18 @@ class Todos {
     renderTodo(el) {
 
         let todo = `<div class="todo"> 
-                    <div class="todo_title ${el.done ? "done" : ""}" data-id="${el.id}" data-done="${el.done}">
-                     ${el.title} ${el.done ? `<div class="done_text">zrobione!</p>` : ""} </div>
+                   <div><button class="btn close_but">x</button>  <div class="todo_title ${el.done ? "done" : ""}" data-id="${el.id}" data-done="${el.done}">
+                     ${el.title} ${el.done ? `<div class="done_text">zrobione!</div>` : ""}</div> </div>
                     <div class="todo_desc ${el.done ? "hidden" : ""}"> ${el.desc} </div></div> `;
         return todo
-    }
+    };
 
-    changeTodo(id, state) {
-
-        let data = {"done": state},
-            xhr = new XMLHttpRequest();
-        
-        xhr.open("PATCH", `${this.url}/${id}`);
-
-        xhr.setRequestHeader("Content-type", "application/json")
-    
-        xhr.send(JSON.stringify(data));
-
-    }
-
-    deleteTodo(id) {
-// DELETE
-        // usuwanie todo po klikniętym id
-    }
-
+  
     newTodo(data) {
 // POST
         // tworzenie nowego todo, wysyłanie na serwer
 
-    }
+    };
 
 }
 
