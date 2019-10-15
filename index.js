@@ -4,6 +4,9 @@ class Todos {
     constructor(url) {
         this.todosList = $(".todos");
         this.url = url;
+        this.form = $("#new_todo");
+        this.newTitle = $(".new_todo_title");
+        this.newDesc = $(".new_todo_desc");
 
         this.renderTodos();
 
@@ -18,8 +21,10 @@ class Todos {
             this.deleteTodo(e)
         });
 
-        
-
+        this.form.on("click", "button", e => {
+            this.newTodo()
+        })
+    
     }
 
     async deleteTodo(e) {
@@ -71,12 +76,23 @@ class Todos {
     };
 
   
-    newTodo(data) {
-// POST
-        // tworzenie nowego todo, wysyłanie na serwer
+  async newTodo() {
 
+    let data = {
+        "title": this.newTitle[0].value,
+        "desc": this.newDesc[0].value,
+        "done": false
+    };
+
+    this.newTitle[0].value = "";
+    this.newDesc[0].value = "";
+
+       await xhr("POST", this.url, data);
+
+       this.renderTodos()
     };
 
 }
 
 const todos = new Todos("http://localhost:3000/todos");
+
