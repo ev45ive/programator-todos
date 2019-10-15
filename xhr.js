@@ -10,7 +10,7 @@ export function xhr(type, url, data) {
             
             if(type == "GET" && xhr.status === 200) {
                 resolve(JSON.parse(xhr.response));
-            } else if (xhr.status === 200) {
+            } else if (xhr.status === 200 || xhr.status === 201) {
 
                 resolve();
 
