@@ -1,0 +1,19 @@
+{
+  "todos":[
+    {
+      "id": 123,
+      "name": "Naucz sie JSa!",
+      "completed": false
+    },
+    {
+      "id": 234,
+      "name": "Naucz sie ES6!",
+      "completed": false
+    },
+    {
+      "id": 345,
+      "name": "Naucz sie HTML5!",
+      "completed": false
+    }
+  ]
+}
