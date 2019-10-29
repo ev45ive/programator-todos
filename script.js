@@ -1,73 +1,71 @@
-(function($) {
-  $(document).ready(function() {
-    function sendRequest(method, url, data) {
-      let xhr = new XMLHttpRequest();
+$(function() {
+  let tasks = [];
 
-      let p = new Promise(function(resolve, reject) {
-        xhr.onload = function() {
-          if (xhr.status === 200) {
-            resolve(JSON.parse(xhr.response));
-          } else {
-            reject(new Error("Wystąpił błąd"));
-          }
-        };
+  function fetchTodos() {
+    sendRequest("GET", "http://localhost:3000/todos").then(
+      resp => {
+        tasks = resp;
+        renderTasks(tasks);
+      },
+      err => ($("#output").textContent = err.message)
+    );
+  }
 
-        xhr.onerror = function() {
-          reject(new Error("Wystapił błąd"));
-        };
-      });
-      xhr.open(method, url);
+  function renderTasks(tasks) {
+    tasks.forEach(task => $("#output").append(taskTemplate(task)));
+  }
 
-      if (data) {
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(JSON.stringify(data));
-      } else {
-        xhr.send();
-      }
+  function taskTemplate(task) {
+    const todo = $(`<div class='todo' data-id="${task.id}">
+      ${task.name}
+    </div>`).toggleClass("task-completed", task.completed);
 
-      return p;
-    }
+    return todo;
+  }
 
-    let tasks = [];
+  $("#output").on("click", ".todo", function(e) {
+    const id = e.target.dataset.id;
 
-    function renderTodos() {
-      sendRequest("GET", "http://localhost:3000/todos").then(
-        resp => {
-          (tasks = resp), renderTasks(tasks);
-        },
-        err => ($("#output").textContent = err.message)
-      );
-    }
+    // Find Task
+    const task = tasks.find(t => t.id == id);
 
-    function renderTasks(tasks) {
-      tasks.forEach(task => $("#output").append(taskTemplate(task)));
-    }
+    // Update Task
+    task.completed = !task.completed;
 
-    function taskTemplate(task) {
-      let todo = $("<div class='todo'></div>");
+    // Update View / DOM
+    $(this).toggleClass("task-completed", task.completed);
 
-      todo.text(task.name);
-
-      return todo;
-    }
-
-    $("#output").on("click", ".todo", function(e) {
-      const taskName = e.target.textContent;
-      const task = tasks.find(t => t.name == taskName);
-
-      if (!task.completed) {
-        task.completed = true;
-        sendRequest("PUT", "http://localhost:3000/todos" + "/" + task.id, task);
-        $(this).addClass("task-completed");
-      } else {
-        task.completed = false;
-        sendRequest("PUT", "http://localhost:3000/todos" + "/" + task.id, task);
-        $(this).removeClass("task-completed");
-      }
-
-      console.log(task);
-    });
-
-    renderTodos();
+    // Update Server
+    sendRequest("PUT", "http://localhost:3000/todos" + "/" + task.id, task);
   });
-})(jQuery);
+
+  fetchTodos();
+});
+
+function sendRequest(method, url, data) {
+  let xhr = new XMLHttpRequest();
+
+  let p = new Promise(function(resolve, reject) {
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        resolve(JSON.parse(xhr.response));
+      } else {
+        reject(new Error("Wystąpił błąd"));
+      }
+    };
+
+    xhr.onerror = function() {
+      reject(new Error("Wystapił błąd"));
+    };
+  });
+  xhr.open(method, url);
+
+  if (data) {
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(data));
+  } else {
+    xhr.send();
+  }
+
+  return p;
+}
