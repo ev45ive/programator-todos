@@ -4,19 +4,37 @@
       "id": 1,
       "title": "do homework",
       "desc": "todos script with json-server",
-      "done": false
+      "done": true
     },
     {
       "title": "relax",
       "desc": "sleeping...",
-      "done": false,
+      "done": true,
       "id": 2
     },
     {
-      "title": "free time",
-      "desc": "book reading",
+      "title": "Naucz się GITa!",
+      "desc": "I githuba też możesz! ;D",
       "done": false,
-      "id": 3
+      "id": 4
+    },
+    {
+      "title": "test",
+      "desc": "test",
+      "done": false,
+      "id": 5
+    },
+    {
+      "title": "123",
+      "desc": "123",
+      "done": false,
+      "id": 6
+    },
+    {
+      "title": "123",
+      "desc": "123",
+      "done": false,
+      "id": 7
     }
   ]
 }

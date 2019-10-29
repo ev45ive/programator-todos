@@ -1,98 +1,105 @@
-import {xhr} from "./xhr.js";
+import { xhr } from "./xhr.js";
 
-class Todos {
-    constructor(url) {
-        this.todosList = $(".todos");
-        this.url = url;
-        this.form = $("#new_todo");
-        this.newTitle = $(".new_todo_title");
-        this.newDesc = $(".new_todo_desc");
+// Server + listeners
+class TodosModel{}
 
-        this.renderTodos();
 
-        this.todosList.on("click", ".todo_title", e => {
+class TodosList {
+  constructor(url, selector = ".todos") {
+    this.todosList = $(selector);
+    this.url = url;
+    this.render();
 
-          this.makeDone(e)
+    this.todosList.on("click", ".todo_title", e => {
+      this.makeDone(e);
+    });
 
-        });
+    this.todosList.on("click", ".close_but", e => {
+      this.deleteTodo(e);
+    });
+  }
 
-        this.todosList.on("click", ".close_but", e => {
+  async deleteTodo(e) {
+    let todo = e.currentTarget.nextElementSibling,
+      id = todo.dataset.id,
+      url = this.url + "/" + id;
 
-            this.deleteTodo(e)
-        });
+    await xhr("DELETE", url, null);
 
-        this.form.on("click", "button", e => {
-            this.newTodo()
-        })
-    
-    }
+    this.render();
+  }
 
-    async deleteTodo(e) {
+  async makeDone(e) {
+    let todo = e.target,
+      id = todo.dataset.id,
+      state = todo.dataset.done == "true" ? false : true,
+      data = { done: state },
+      url = this.url + "/" + id;
 
-        let todo = e.currentTarget.nextElementSibling,
-        id = todo.dataset.id,
-        url = this.url+"/"+id;
-        
-       await xhr("DELETE", url, null)
+    await xhr("PATCH", url, data);
 
-       this.renderTodos();
-    
-    };
+    this.render();
+  }
 
-   async makeDone(e) {
-        let todo = e.target,
-        id = todo.dataset.id,
-        state = (todo.dataset.done == "true") ? false : true,
-       data = {"done": state},
-        url = this.url+"/"+id;
-    
-    await xhr("PATCH", url, data)
+  async render() {
+    let json = await xhr("GET", this.url, null);
+    this.todosList.empty();
 
-    this.renderTodos();
-    };
+    json.forEach(el => {
+      el.done
+        ? this.todosList.append(this.renderTodo(el))
+        : this.todosList.prepend(this.renderTodo(el));
+    });
+  }
 
-   async renderTodos() {
-
-        this.todosList.empty();
-
-        let json = await xhr("GET", this.url, null);
-
-                      
-        json.forEach(el => {
-            
-            el.done ? this.todosList.append(this.renderTodo(el)) : this.todosList.prepend(this.renderTodo(el))
-            
-        });
-
-        
+  renderTodo(el) {
+    let todo = `<div class="todo"> 
+        <div><button class="btn close_but">x</button>  
+        <div class="todo_title ${el.done ? "done" : ""}" data-id="${
+      el.id
+    }" data-done="${el.done}">
+            ${el.title} ${
+      el.done ? `<div class="done_text">zrobione!</div>` : ""
+    }</div> </div>
+                    <div class="todo_desc ${el.done ? "hidden" : ""}"> ${
+      el.desc
+    } </div></div> `;
+    return todo;
+  }
 }
-    renderTodo(el) {
 
-        let todo = `<div class="todo"> 
-                   <div><button class="btn close_but">x</button>  <div class="todo_title ${el.done ? "done" : ""}" data-id="${el.id}" data-done="${el.done}">
-                     ${el.title} ${el.done ? `<div class="done_text">zrobione!</div>` : ""}</div> </div>
-                    <div class="todo_desc ${el.done ? "hidden" : ""}"> ${el.desc} </div></div> `;
-        return todo
-    };
+class TodosForm {
+  constructor(url) {
+    this.url = url;
+    this.form = $("#new_todo");
+    this.newTitle = $(".new_todo_title");
+    this.newDesc = $(".new_todo_desc");
 
-  
+    this.form.on("click", "button", e => {
+      this.newTodo();
+    });
+    this._listeners = [];
+  }
+
   async newTodo() {
-
     let data = {
-        "title": this.newTitle[0].value,
-        "desc": this.newDesc[0].value,
-        "done": false
+      title: this.newTitle[0].value,
+      desc: this.newDesc[0].value,
+      done: false
     };
 
     this.newTitle[0].value = "";
     this.newDesc[0].value = "";
 
-       await xhr("POST", this.url, data);
+    await xhr("POST", this.url, data);
 
-       this.renderTodos()
-    };
-
+    this._listeners.forEach(_listener => _listener.render());
+  }
 }
 
-const todos = new Todos("http://localhost:3000/todos");
+window.todosform = new TodosForm("http://localhost:3000/todos");
 
+window.todos = new TodosList("http://localhost:3000/todos");
+window.todos2 = new TodosList("http://localhost:3000/todos",".todos2");
+
+window.todosform._listeners.push(todos,todos2)

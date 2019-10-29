@@ -1,0 +1,33 @@
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\ev45i\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'http'
+1 verbose cli ]
+2 info using npm@3.10.6
+3 info using node@v12.13.0
+4 verbose run-script [ 'prehttp', 'http', 'posthttp' ]
+5 info lifecycle projekty@1.0.0~prehttp: projekty@1.0.0
+6 silly lifecycle projekty@1.0.0~prehttp: no script for prehttp, continuing
+7 info lifecycle projekty@1.0.0~http: projekty@1.0.0
+8 verbose lifecycle projekty@1.0.0~http: unsafe-perm in lifecycle true
+9 verbose lifecycle projekty@1.0.0~http: PATH: C:\Users\ev45i\AppData\Roaming\npm\node_modules\npm\bin\node-gyp-bin;C:\Projects\programator\kamila-todos\node_modules\.bin;C:\Python27\;C:\Python27\Scripts;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Dell\DW WLAN Card;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\WIDCOMM\Bluetooth Software\;C:\Program Files\WIDCOMM\Bluetooth Software\syswow64;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\PuTTY\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\Brackets\command;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\ProgramData\chocolatey\bin;C:\Python27;C:\Program Files\Java\jdk1.8.0_162\bin;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Calibre2\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\nodejs\;C:\Users\ev45i\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\ev45i\AppData\Local\Programs\Python\Python36\;C:\Program Files\Docker Toolbox;C:\Users\ev45i\AppData\Local\atom\bin;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\ev45i\AppData\Local\Microsoft\WindowsApps;C:\Users\ev45i\bin\Sencha\Cmd;C:\Users\ev45i\AppData\Roaming\Composer\vendor\bin;C:\xampp\mysql\bin;C:\Program Files\MongoDB\Server\3.6\bin;C:\Users\ev45i\AppData\Local\Android\Sdk\platform-tools;C:\Projects\maven\bin;;C:\Users\ev45i\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ev45i\AppData\Roaming\npm
+10 verbose lifecycle projekty@1.0.0~http: CWD: C:\Projects\programator\kamila-todos
+11 silly lifecycle projekty@1.0.0~http: Args: [ '/d /s /c', 'http-server' ]
+12 verbose stack Error: kill ENOSYS
+12 verbose stack     at process.kill (internal/process/per_thread.js:189:13)
+12 verbose stack     at process.listener (C:\Users\ev45i\AppData\Roaming\npm\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:86:15)
+12 verbose stack     at process.emit (events.js:210:5)
+13 verbose cwd C:\Projects\programator\kamila-todos
+14 error Windows_NT 10.0.17763
+15 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\ev45i\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "run" "http"
+16 error node v12.13.0
+17 error npm  v3.10.6
+18 error code ENOSYS
+19 error errno ENOSYS
+20 error syscall kill
+21 error kill ENOSYS
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]
