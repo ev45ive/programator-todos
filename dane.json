@@ -2,18 +2,100 @@
   "todos": [
     {
       "id": 123,
-      "name": "Naucz sie JSa!",
-      "completed": true
+      "title": "Naucz sie JSa!",
+      "completed": false
     },
     {
       "id": 234,
-      "name": "Naucz sie ES6!",
-      "completed": false
+      "title": "Naucz sie ES6!",
+      "completed": true
     },
     {
       "id": 345,
-      "name": "Naucz sie HTML5!",
+      "title": "Naucz sie HTML5!",
+      "completed": true
+    },
+    {
+      "title": "Naucz się programowania obiektowego!",
+      "priotity": "Low",
+      "type": "Task",
+      "due_date": "2019-09-30",
+      "description": "test",
+      "id": 346,
+      "completed": true
+    },
+    {
+      "title": "I co wy na to?",
+      "type": "Issue",
+      "due_date": "",
+      "description": "",
+      "id": 347,
       "completed": false
+    },
+    {
+      "title": "Jesteście tutaj jeszcze?",
+      "type": "Issue",
+      "due_date": "",
+      "description": "",
+      "id": 348,
+      "completed": "on"
+    },
+    {
+      "title": "I co wy na to?? Lepiej tak?",
+      "type": "Issue",
+      "due_date": "",
+      "description": "",
+      "id": 349,
+      "completed": false
+    },
+    {
+      "title": "I działa? Czy działa?",
+      "type": "Issue",
+      "due_date": "",
+      "description": "",
+      "id": 350
+    },
+    {
+      "title": "Placki",
+      "type": "Issue",
+      "due_date": "",
+      "description": "",
+      "id": 351,
+      "completed": false
+    },
+    {
+      "title": "dawd",
+      "type": "Issue",
+      "due_date": "",
+      "description": "",
+      "id": 352
+    },
+    {
+      "title": "placki",
+      "type": "",
+      "completed": "on",
+      "description": "",
+      "due_date": "2019-10-31T19:29:19.685Z",
+      "priotity": "Low",
+      "id": 353
+    },
+    {
+      "title": "Placki 123",
+      "type": "Task",
+      "completed": "on",
+      "description": "tsge",
+      "due_date": "2019-12-31",
+      "priotity": "Low",
+      "id": 354
+    },
+    {
+      "title": "Konczymy na dzis?",
+      "type": "",
+      "completed": "on",
+      "description": "",
+      "due_date": "",
+      "priotity": "Low",
+      "id": 355
     }
   ]
 }

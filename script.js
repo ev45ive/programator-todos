@@ -17,7 +17,7 @@ $(function() {
 
   function taskTemplate(task) {
     const todo = $(`<div class='todo' data-id="${task.id}">
-      ${task.name}
+      ${task.title}
     </div>`).toggleClass("task-completed", task.completed);
 
     return todo;
@@ -37,6 +37,8 @@ $(function() {
 
     // Update Server
     sendRequest("PUT", "http://localhost:3000/todos" + "/" + task.id, task);
+    
+    // fetchTodos();
   });
 
   fetchTodos();
