@@ -1,4 +1,11 @@
 {
+  "files": [
+    {
+      "todoId": "355",
+      "image": "17323430.gif",
+      "id": 1
+    }
+  ],
   "todos": [
     {
       "id": 123,
@@ -33,52 +40,7 @@
       "completed": false
     },
     {
-      "title": "TEst",
-      "type": "",
-      "completed": "on",
-      "description": "",
-      "due_date": "",
-      "priotity": "Low",
-      "id": 348
-    },
-    {
-      "title": "",
-      "type": "",
-      "completed": "on",
-      "description": "",
-      "due_date": "",
-      "priotity": "Low",
-      "id": 349
-    },
-    {
-      "title": "",
-      "type": "",
-      "completed": "on",
-      "description": "",
-      "due_date": "",
-      "priotity": "Low",
-      "id": 350
-    },
-    {
-      "title": "",
-      "type": "Issue",
-      "completed": "on",
-      "description": "",
-      "due_date": "",
-      "priotity": "Low",
-      "id": 351
-    },
-    {
-      "title": "",
-      "type": "Issue",
-      "completed": "on",
-      "description": "",
-      "due_date": "",
-      "priotity": "Low",
-      "id": 352
-    },
-    {
-      "title": "123",
+      "title": "Ala ma kota",
       "type": "Issue",
       "completed": "on",
       "description": "",
@@ -87,7 +49,7 @@
       "id": 353
     },
     {
-      "title": "123",
+      "title": "ala ma kota, a deaners ma smoki",
       "type": "Issue",
       "completed": "on",
       "description": "",
@@ -96,7 +58,7 @@
       "id": 354
     },
     {
-      "title": "Placki",
+      "title": "Upload obrazkow do folderu /uploads",
       "type": "Issue",
       "completed": "on",
       "description": "",

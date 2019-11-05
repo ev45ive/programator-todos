@@ -25,7 +25,15 @@ class TodoFormView extends View {
       if (input.value.includes("Placki")) {
         input.setCustomValidity("Nie może być Placków!");
       } else {
-        input.setCustomValidity('');
+        input.setCustomValidity("");
+      }
+    });
+
+    this.$form.on("change", "[type=file]", e => {
+      if (e.target.files.length) {
+        console.log(e.target.files[0])
+        const url = URL.createObjectURL(e.target.files[0]);
+        this.$form.find(".image-preview").prop("src", url);
       }
     });
   }
@@ -35,7 +43,7 @@ class TodoFormView extends View {
     Array.from(elements).forEach(elem => {
       if (elem.type == "checkbox") {
         elem.checked = this.model.data[elem.name];
-      } else if (["button", "submit"].indexOf(elem.type) == -1) {
+      } else if (["button", "submit","file"].indexOf(elem.type) == -1) {
         elem.value = this.model.data[elem.name];
       }
     });
@@ -79,7 +87,7 @@ class TodoFormView extends View {
     console.log(errors);
   }
 
-  submit() {
+  async submit() {
     if (!this.$form.get(0).checkValidity()) {
       this.showErrors();
       return;
@@ -89,6 +97,23 @@ class TodoFormView extends View {
       this.model.set(elem.name, elem.value);
     });
     this._listeners.fire("submit", this.model);
+
+    const fileInput = this.$form.find("[type=file]").get(0);
+
+    if (fileInput.files.length & this.model.id) {
+      const formData = new FormData();
+      formData.append("todoId", this.model.id);
+      formData.append("image",  fileInput.files[0].name);
+      formData.append("avatar", fileInput.files[0], fileInput.files[0].name);
+
+      await fetch("http://localhost:3000/files", {
+        method: "POST",
+        body: formData,
+        headers: {
+          // "Content-Type": "multipart/form-data"
+        }
+      });
+    }
   }
 }
 

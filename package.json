@@ -5,8 +5,9 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "api":"json-server ./dane.json",
-    "start": "http-server"
+    "api": "json-server ./dane.json",
+    "start": "http-server",
+    "upload-api":"node --inspect ./uploads.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
   "devDependencies": {
     "http-server": "^0.11.1",
     "json-server": "^0.15.1"
+  },
+  "dependencies": {
+    "multer": "^1.4.2"
   }
 }
