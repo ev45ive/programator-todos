@@ -18,6 +18,16 @@ class TodoFormView extends View {
       this.submit();
     });
     this._listeners = $.Callbacks();
+
+    this.$form.on("input", "[name=title]", e => {
+      const input = $(e.target).get(0);
+
+      if (input.value.includes("Placki")) {
+        input.setCustomValidity("Nie może być Placków!");
+      } else {
+        input.setCustomValidity('');
+      }
+    });
   }
 
   render() {
@@ -36,7 +46,44 @@ class TodoFormView extends View {
     this.render();
   }
 
+  showErrors() {
+    const elements = this.$form.get(0).elements;
+
+    const errors = [];
+
+    Array.from(elements).forEach(input => {
+      const {
+        badInput,
+        customError,
+        patternMismatch,
+        rangeOverflow,
+        rangeUnderflow,
+        stepMismatch,
+        tooLong,
+        tooShort,
+        typeMismatch,
+        valid,
+        valueMissing
+      } = input.validity;
+
+      if (customError) {
+        $(".errors.errors-" + input.name).text(input.validationMessage);
+      }
+      if (valueMissing) {
+        $(".errors.errors-" + input.name).text("Pole wymagane");
+      }
+      if (patternMismatch) {
+        $(".errors.errors-" + input.name).text("Nie moze zaczynac sie od cyfr");
+      }
+    });
+    console.log(errors);
+  }
+
   submit() {
+    if (!this.$form.get(0).checkValidity()) {
+      this.showErrors();
+      return;
+    }
     const elements = this.$form.serializeArray();
     elements.forEach(elem => {
       this.model.set(elem.name, elem.value);

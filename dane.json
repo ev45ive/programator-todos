@@ -33,64 +33,71 @@
       "completed": false
     },
     {
-      "title": "Jesteście tutaj jeszcze?",
-      "type": "Issue",
-      "due_date": "",
-      "description": "",
-      "id": 348,
-      "completed": "on"
-    },
-    {
-      "title": "I co wy na to?? Lepiej tak?",
-      "type": "Issue",
-      "due_date": "",
-      "description": "",
-      "id": 349,
-      "completed": false
-    },
-    {
-      "title": "I działa? Czy działa?",
-      "type": "Issue",
-      "due_date": "",
-      "description": "",
-      "id": 350
-    },
-    {
-      "title": "Placki",
-      "type": "Issue",
-      "due_date": "",
-      "description": "",
-      "id": 351,
-      "completed": false
-    },
-    {
-      "title": "dawd",
-      "type": "Issue",
-      "due_date": "",
-      "description": "",
-      "id": 352
-    },
-    {
-      "title": "placki",
+      "title": "TEst",
       "type": "",
       "completed": "on",
       "description": "",
-      "due_date": "2019-10-31T19:29:19.685Z",
+      "due_date": "",
+      "priotity": "Low",
+      "id": 348
+    },
+    {
+      "title": "",
+      "type": "",
+      "completed": "on",
+      "description": "",
+      "due_date": "",
+      "priotity": "Low",
+      "id": 349
+    },
+    {
+      "title": "",
+      "type": "",
+      "completed": "on",
+      "description": "",
+      "due_date": "",
+      "priotity": "Low",
+      "id": 350
+    },
+    {
+      "title": "",
+      "type": "Issue",
+      "completed": "on",
+      "description": "",
+      "due_date": "",
+      "priotity": "Low",
+      "id": 351
+    },
+    {
+      "title": "",
+      "type": "Issue",
+      "completed": "on",
+      "description": "",
+      "due_date": "",
+      "priotity": "Low",
+      "id": 352
+    },
+    {
+      "title": "123",
+      "type": "Issue",
+      "completed": "on",
+      "description": "",
+      "due_date": "",
       "priotity": "Low",
       "id": 353
     },
     {
-      "title": "Placki 123",
-      "type": "Task",
+      "title": "123",
+      "type": "Issue",
       "completed": "on",
-      "description": "tsge",
-      "due_date": "2019-12-31",
+      "description": "",
+      "due_date": "",
       "priotity": "Low",
       "id": 354
     },
     {
-      "title": "Konczymy na dzis?",
-      "type": "",
+      "title": "Placki",
+      "type": "Issue",
       "completed": "on",
       "description": "",
       "due_date": "",

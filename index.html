@@ -24,6 +24,7 @@
         <div class="col">
           <form
             action="http://localhost:3000/todos"
+            novalidate
             method="POST"
             class="js-todo-form"
           >
@@ -32,12 +33,17 @@
             <div class="form-group">
               <label for="title">Title:</label>
               <input
+                required="true"
+                minlength="3"
+                pattern="[^0-9].*"
+
                 type="text"
                 class="form-control"
                 id="title"
                 name="title"
                 placeholder="Short task description"
               />
+              <div class="errors errors-title"></div>
             </div>
 
             <div class="form-check form-check-inline">
@@ -123,6 +129,12 @@
     <style>
       .task-completed {
         text-decoration: line-through;
+      }
+
+     form input:invalid,
+     form select:invalid,
+     form textarea:invalid {
+        border: 2px solid red !important;
       }
     </style>
   </body>

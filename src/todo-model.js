@@ -1,6 +1,7 @@
 class TodoModel {
   constructor(data) {
     this.data = data || {
+      id: undefined,
       title: "",
       type: "",
       completed: "on",
@@ -10,8 +11,23 @@ class TodoModel {
     };
   }
 
+  get id(){
+    return this.data.id
+  }
+
+  get(key) {
+    return this.data[key];
+  }
+
   set(key, value) {
     this.data[key] = value;
+  }
+
+  async delete() {
+    const result = await fetch("http://localhost:3000/todos/" + this.data.id, {
+      method: "DELETE"
+    });
+    return result
   }
 
   async save() {
