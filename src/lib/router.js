@@ -8,8 +8,8 @@ export class Router {
 
   initialize() {
     this._hashNavigate();
-    // window.addEventListener("hashchange", () => this._hashNavigate());
-    window.addEventListener("popstate", () => this._historyNavigate());
+    window.addEventListener("hashchange", () => this._hashNavigate());
+    // window.addEventListener("popstate", () => this._historyNavigate());
   }
 
   addEventListener(type, fn) {

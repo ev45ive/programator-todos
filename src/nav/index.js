@@ -9,9 +9,9 @@ export class NavigationView extends View{
       event.preventDefault();
 
       // Router.navigate()
-      // window.location.hash = event.target.pathname
-      window.history.pushState('',event.target.textContent, event.target.pathname);
-      window.dispatchEvent(new CustomEvent('popstate'))
+      window.location.hash = event.target.pathname
+      // window.history.pushState('',event.target.textContent, event.target.pathname);
+      // window.dispatchEvent(new CustomEvent('popstate'))
     })
   }
 
