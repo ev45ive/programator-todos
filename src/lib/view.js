@@ -5,8 +5,12 @@ export class View{
   }
 
   render(){
-    if(this.template){
+    if('function' === typeof this.template){
+      this.$el.html(this.template(this))
+    }else if('string' === typeof this.template){
       this.$el.html(this.template)
+    }else{
+      throw Error('View::render() - Template must be as string or function')
     }
   }
 

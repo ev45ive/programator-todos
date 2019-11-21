@@ -3,6 +3,10 @@ import { UsersView } from "./users/index.js";
 import { TodosView } from "./todos/index.js";
 import { Router } from './lib/router.js'
 import { FrontPageView } from './lib/frontpageview.js'
+import { NavigationView } from "./nav/index.js";
+
+const navView = new NavigationView('#nav');
+navView.render()
 
 const frontView = new FrontPageView("#root");
 
@@ -24,7 +28,7 @@ const router = new Router([
     view: UsersView
   },
   {
-    path: "/.*",
+    path: ".*",
     view: PagesView
   }
 ]);
