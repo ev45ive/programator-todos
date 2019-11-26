@@ -5,6 +5,6 @@ export class MateuszPageView extends View{
 
   template = ({}) => `<div>
     <h3>Pages</h3>
-    <p>Mateusz K.</p>  
+    <p>Mateusz Kulesza</p>  
   </div>`
 }
