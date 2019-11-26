@@ -25,6 +25,10 @@ const router = new Router([
     view: MateuszPageView
   },
   {
+    path: "/pages/kamila",
+    view: KamilaPageView
+  },
+  {
     path: "/todos",
     view: TodosView
   },

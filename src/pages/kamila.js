@@ -1,10 +1,10 @@
 import {View} from '../lib/view.js'
 
 
-export class MateuszPageView extends View{
+export class KamilaPageView extends View{
 
   template = ({}) => `<div>
     <h3>Pages</h3>
-    <p>Mateusz Kulesza</p>  
+    <p>KamilaRB</p>  
   </div>`
 }
