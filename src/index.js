@@ -1,6 +1,7 @@
 import { PagesView } from "./pages/index.js";
 import { UsersView } from "./users/index.js";
 import { TodosView } from "./todos/index.js";
+import { PageNotFoundView } from "./pages/not_found";
 import { MateuszPageView } from "./pages/mateusz.js";
 import { KamilaPageView } from "./pages/kamila.js";
 import { Router } from './lib/router.js'
@@ -39,7 +40,7 @@ const router = new Router([
   },
   {
     path: ".*",
-    view: PagesView
+    view: PageNotFoundView
   }
 ]);
 
