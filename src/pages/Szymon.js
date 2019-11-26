@@ -5,6 +5,6 @@ export class SzymonPageView extends View{
 
   template = ({}) => `<div>
     <h3>Pages</h3>
-    <p>Mateusz Kulesza</p>  
+    <p>Szymon Śliwa</p>  
   </div>`
 }
